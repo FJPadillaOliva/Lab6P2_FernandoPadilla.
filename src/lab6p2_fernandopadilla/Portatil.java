@@ -12,8 +12,8 @@ public class Portatil extends Consola{
     public Portatil() {
     }
 
-    public Portatil(String screenSize, int bateria, boolean estuche, String id, String fabricantes, int añosUso, double precio, ArrayList<Juego> juegosDisponibles, String modelo) {
-        super(id, fabricantes, añosUso, precio, juegosDisponibles, modelo);
+    public Portatil(String screenSize, int bateria, boolean estuche, String id, String fabricantes, int añosUso, double precio, String modelo) {
+        super(id, fabricantes, añosUso, precio,modelo);
         this.screenSize = screenSize;
         this.bateria = bateria;
         this.estuche = estuche;

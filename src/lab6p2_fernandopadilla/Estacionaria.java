@@ -11,8 +11,8 @@ public class Estacionaria extends Consola{
     public Estacionaria() {
     }
 
-    public Estacionaria(int controles, int almacenamiento, String tipoC, String id, String fabricantes, int añosUso, double precio, ArrayList<Juego> juegosDisponibles, String modelo) {
-        super(id, fabricantes, añosUso, precio, juegosDisponibles, modelo);
+    public Estacionaria(int controles, int almacenamiento, String tipoC, String id, String fabricantes, int añosUso, double precio, String modelo) {
+        super(id, fabricantes, añosUso, precio, modelo);
         this.controles = controles;
         this.almacenamiento = almacenamiento;
         this.tipoC = tipoC;

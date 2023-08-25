@@ -15,12 +15,11 @@ public class Consola {
     public Consola() {
     }
 
-    public Consola(String id, String fabricantes, int añosUso, double precio, ArrayList<Juego> juegosDisponibles, String modelo) {
-        setId(id);
+    public Consola(String id, String fabricantes, int añosUso, double precio, String modelo) {
+        this.id = id;
         this.fabricantes = fabricantes;
         this.añosUso = añosUso;
         this.precio = precio;
-        this.juegosDisponibles = juegosDisponibles;
         this.modelo = modelo;
     }
 
@@ -29,12 +28,7 @@ public class Consola {
     }
 
     public void setId(String id) {
-        if (id.length() == 4) {
             this.id = id;
-        }else{
-            JOptionPane.showMessageDialog(null, "El id debe ser de 4 caracteres");
-        }
-        
     }
 
     public String getFabricantes() {

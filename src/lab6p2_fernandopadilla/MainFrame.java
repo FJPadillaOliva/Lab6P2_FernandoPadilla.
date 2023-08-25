@@ -4,6 +4,10 @@
  */
 package lab6p2_fernandopadilla;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Wendy
@@ -15,7 +19,9 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
+    ArrayList<Consola> consolas = new ArrayList();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +52,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         tf_numControles = new javax.swing.JTextField();
         tf_almacenamiento = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        tf_tipoC = new javax.swing.JTextField();
         btn_aggC = new javax.swing.JButton();
         panel_aggP = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -70,6 +76,8 @@ public class MainFrame extends javax.swing.JFrame {
         rb_No = new javax.swing.JRadioButton();
         btn_aggP = new javax.swing.JButton();
         panel_Listar = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_lista = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,32 +118,35 @@ public class MainFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(panel_aggCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_aggCLayout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(tf_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_aggCLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(41, 41, 41)
-                                .addComponent(tf_modelo, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                                .addComponent(tf_modelo))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_aggCLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
                                 .addComponent(tf_años))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_aggCLayout.createSequentialGroup()
-                                .addGroup(panel_aggCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(panel_aggCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tf_id)
-                                    .addComponent(tf_fabricante, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))))
+                                .addGroup(panel_aggCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_aggCLayout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(46, 46, 46)
+                                        .addComponent(tf_precio))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_aggCLayout.createSequentialGroup()
+                                        .addGroup(panel_aggCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel2))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(panel_aggCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tf_id, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                            .addComponent(tf_fabricante))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(panel_aggCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panel_aggCLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tf_numControles, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 1, Short.MAX_VALUE))
                             .addGroup(panel_aggCLayout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -143,7 +154,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(panel_aggCLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(tf_tipoC, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panel_aggCLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_aggC, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,7 +181,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(tf_años, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_tipoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panel_aggCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -181,7 +192,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(tf_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(btn_aggC, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Agregar Consola", panel_aggC);
@@ -218,6 +229,11 @@ public class MainFrame extends javax.swing.JFrame {
         rb_No.setText("No");
 
         btn_aggP.setText("Agregar");
+        btn_aggP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_aggPMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_aggPLayout = new javax.swing.GroupLayout(panel_aggP);
         panel_aggP.setLayout(panel_aggPLayout);
@@ -314,22 +330,46 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(tf_modelo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(btn_aggP, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Agregar Portatil", panel_aggP);
 
         panel_Listar.setBackground(new java.awt.Color(0, 102, 102));
 
+        tb_lista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Fabricante", "Años de Uso", "Precio", "Modelo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tb_lista);
+
         javax.swing.GroupLayout panel_ListarLayout = new javax.swing.GroupLayout(panel_Listar);
         panel_Listar.setLayout(panel_ListarLayout);
         panel_ListarLayout.setHorizontalGroup(
             panel_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_ListarLayout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
         );
         panel_ListarLayout.setVerticalGroup(
             panel_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 372, Short.MAX_VALUE)
+            .addGroup(panel_ListarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Listar", panel_Listar);
@@ -359,9 +399,114 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void actualizarTable(){
+        tb_lista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Fabricante", "Años de Uso", "Precio", "Modelo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        DefaultTableModel tb = (DefaultTableModel)tb_lista.getModel();
+        for (Consola t : consolas) {
+            Object[] row = {t.getId(),t.getFabricantes(),t.getAñosUso(),t.getPrecio(),t.getModelo()};
+            tb.addRow(row);
+        }
+        tb_lista.setModel(tb);
+    }
+    
     private void btn_aggCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_aggCMouseClicked
-        // TODO add your handling code here:
+        boolean valido = false;
+        String id = tf_id.getText().toUpperCase();
+        String fabricante = tf_fabricante.getText();
+        int añosUso = Integer.parseInt(tf_años.getText());
+        double precio = Double.parseDouble(tf_precio.getText());
+        String modelo = tf_modelo.getText();
+        int numC = Integer.parseInt(tf_numControles.getText());
+        int almacenamiento = Integer.parseInt(tf_almacenamiento.getText());
+        String tipoC = tf_tipoC.getText();
+        if (id.length() == 8) {
+            if (id.substring(0, 4).matches("\\d+")) {
+                if (id.substring(4).matches("[A-Z]+")) {
+                    valido = true;
+                }
+            }
+        }
+        if (valido) {
+            consolas.add(new Estacionaria(numC, almacenamiento, tipoC, id, fabricante, añosUso, precio, modelo));
+            JOptionPane.showMessageDialog(this, "Creado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "Formato no valido");
+        }
+        tf_id.setText("");
+        tf_años.setText("");
+        tf_fabricante.setText("");
+        tf_modelo.setText("");
+        tf_precio.setText("");
+        tf_almacenamiento.setText("");
+        tf_numControles.setText("");
+        tf_tipoC.setText("");
     }//GEN-LAST:event_btn_aggCMouseClicked
+
+    private void btn_aggPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_aggPMouseClicked
+        // TODO add your handling code here:
+        boolean valido = false;
+        String id = tf_id1.getText().toUpperCase();
+        String fabricante = tf_fabricante1.getText();
+        int añosUso = Integer.parseInt(tf_años1.getText());
+        double precio = Double.parseDouble(tf_precio1.getText());
+        String modelo = tf_modelo1.getText();
+        String sizeP = "";
+        int duracionB = Integer.parseInt(tf_duracionB.getText());
+        boolean estuche = false;
+        if (rb_grande.isSelected()) {
+            sizeP = "Grande";
+        } else if (rb_mediana.isSelected()) {
+            sizeP = "Mediana";
+        } else if (rb_small.isSelected()) {
+            sizeP = "Pequeña";
+        }
+
+        if (rb_Si.isSelected()) {
+            estuche = true;
+        } else if (rb_No.isSelected()) {
+            estuche = false;
+        }
+
+        if (id.length() == 8) {
+            if (id.substring(0, 4).matches("\\d+")) {
+                if (id.substring(4).matches("[A-Z]+")) {
+                    valido = true;
+                }
+            }
+        }
+        if (valido) {
+            consolas.add(new Portatil(sizeP, duracionB, estuche, id, fabricante, añosUso, precio, modelo));
+            JOptionPane.showMessageDialog(this, "Creado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "Formato incorrecto de ID");
+        }
+        tf_id1.setText("");
+        tf_años1.setText("");
+        tf_fabricante1.setText("");
+        tf_modelo1.setText("");
+        tf_precio1.setText("");
+        tf_duracionB.setText("");
+        rb_No.setSelected(false);
+        rb_Si.setSelected(false);
+        rb_grande.setSelected(false);
+        rb_mediana.setSelected(false);
+        rb_small.setSelected(false);
+    }//GEN-LAST:event_btn_aggPMouseClicked
 
     /**
      * @param args the command line arguments
@@ -420,8 +565,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel panel_Listar;
     private javax.swing.JPanel panel_aggC;
     private javax.swing.JPanel panel_aggP;
@@ -430,6 +575,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_grande;
     private javax.swing.JRadioButton rb_mediana;
     private javax.swing.JRadioButton rb_small;
+    private javax.swing.JTable tb_lista;
     private javax.swing.JTextField tf_almacenamiento;
     private javax.swing.JTextField tf_años;
     private javax.swing.JTextField tf_años1;
@@ -443,5 +589,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tf_numControles;
     private javax.swing.JTextField tf_precio;
     private javax.swing.JTextField tf_precio1;
+    private javax.swing.JTextField tf_tipoC;
     // End of variables declaration//GEN-END:variables
 }
