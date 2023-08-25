@@ -909,14 +909,14 @@ public class MainFrame extends javax.swing.JFrame {
     private void btn_modCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modCMouseClicked
         // TODO add your handling code here:
         boolean valido = false;
-        String id = tf_id.getText().toUpperCase();
-        String fabricante = tf_fabricante.getText();
-        int añosUso = Integer.parseInt(tf_años.getText());
-        double precio = Double.parseDouble(tf_precio.getText());
-        String modelo = tf_modelo.getText();
-        int numC = Integer.parseInt(tf_numControles.getText());
-        int almacenamiento = Integer.parseInt(tf_almacenamiento.getText());
-        String tipoC = tf_tipoC.getText();
+        String id = tf_id2.getText().toUpperCase();
+        String fabricante = tf_fabricante2.getText();
+        int añosUso = Integer.parseInt(tf_años2.getText());
+        double precio = Double.parseDouble(tf_precio2.getText());
+        String modelo = tf_modelo2.getText();
+        int numC = Integer.parseInt(tf_numControles1.getText());
+        int almacenamiento = Integer.parseInt(tf_almacenamiento1.getText());
+        String tipoC = tf_tipoC1.getText();
         if (id.length() == 8) {
             if (id.substring(0, 4).matches("\\d+")) {
                 if (id.substring(4).matches("[A-Z]+")) {
@@ -932,38 +932,39 @@ public class MainFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Formato no valido");
         }
         tb_lista.setModel(actualizarTable());
-        tf_id.setText("");
-        tf_años.setText("");
-        tf_fabricante.setText("");
-        tf_modelo.setText("");
-        tf_precio.setText("");
-        tf_almacenamiento.setText("");
-        tf_numControles.setText("");
-        tf_tipoC.setText("");
+        tf_id2.setText("");
+        tf_años2.setText("");
+        tf_fabricante2.setText("");
+        tf_modelo2.setText("");
+        tf_precio2.setText("");
+        tf_almacenamiento1.setText("");
+        tf_numControles1.setText("");
+        tf_tipoC1.setText("");
+        jd_modificarE.dispose();
     }//GEN-LAST:event_btn_modCMouseClicked
 
     private void btn_modPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modPMouseClicked
         // TODO add your handling code here:
         boolean valido = false;
-        String id = tf_id1.getText().toUpperCase();
-        String fabricante = tf_fabricante1.getText();
-        int añosUso = Integer.parseInt(tf_años1.getText());
-        double precio = Double.parseDouble(tf_precio1.getText());
-        String modelo = tf_modelo1.getText();
+        String id = tf_id3.getText().toUpperCase();
+        String fabricante = tf_fabricante3.getText();
+        int añosUso = Integer.parseInt(tf_años3.getText());
+        double precio = Double.parseDouble(tf_precio3.getText());
+        String modelo = tf_modelo3.getText();
         String sizeP = "";
-        int duracionB = Integer.parseInt(tf_duracionB.getText());
+        int duracionB = Integer.parseInt(tf_duracionB1.getText());
         boolean estuche = false;
-        if (rb_grande.isSelected()) {
+        if (rb_grande1.isSelected()) {
             sizeP = "Grande";
-        } else if (rb_mediana.isSelected()) {
+        } else if (rb_mediana1.isSelected()) {
             sizeP = "Mediana";
-        } else if (rb_small.isSelected()) {
+        } else if (rb_small1.isSelected()) {
             sizeP = "Pequeña";
         }
 
-        if (rb_Si.isSelected()) {
+        if (rb_Si1.isSelected()) {
             estuche = true;
-        } else if (rb_No.isSelected()) {
+        } else if (rb_No1.isSelected()) {
             estuche = false;
         }
 
@@ -982,17 +983,18 @@ public class MainFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Formato incorrecto de ID");
         }
         tb_lista.setModel(actualizarTable());
-        tf_id1.setText("");
-        tf_años1.setText("");
-        tf_fabricante1.setText("");
-        tf_modelo1.setText("");
-        tf_precio1.setText("");
-        tf_duracionB.setText("");
-        rb_No.setSelected(false);
-        rb_Si.setSelected(false);
-        rb_grande.setSelected(false);
-        rb_mediana.setSelected(false);
-        rb_small.setSelected(false);
+        tf_id3.setText("");
+        tf_años3.setText("");
+        tf_fabricante3.setText("");
+        tf_modelo3.setText("");
+        tf_precio3.setText("");
+        tf_duracionB1.setText("");
+        rb_No1.setSelected(false);
+        rb_Si1.setSelected(false);
+        rb_grande1.setSelected(false);
+        rb_mediana1.setSelected(false);
+        rb_small1.setSelected(false);
+        jd_modificarP.dispose();
     }//GEN-LAST:event_btn_modPMouseClicked
 
     /**
