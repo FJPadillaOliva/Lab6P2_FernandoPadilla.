@@ -342,11 +342,11 @@ public class MainFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Fabricante", "Años de Uso", "Precio", "Modelo"
+                "ID", "Fabricante", "Años de Uso", "Precio", "Modelo", "Tipo de Consola"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -399,29 +399,36 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void actualizarTable(){
+    public DefaultTableModel actualizarTable(){
         tb_lista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Fabricante", "Años de Uso", "Precio", "Modelo"
+                "ID", "Fabricante", "Años de Uso", "Precio", "Modelo", "Tipo de Consola"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        
         DefaultTableModel tb = (DefaultTableModel)tb_lista.getModel();
+        String tipo = "";
         for (Consola t : consolas) {
-            Object[] row = {t.getId(),t.getFabricantes(),t.getAñosUso(),t.getPrecio(),t.getModelo()};
+            if (t instanceof Portatil) {
+                tipo = "Portatil";
+            }else if(t instanceof Estacionaria){
+                tipo = "Estacionaria";
+            }
+            Object[] row = {t.getId(),t.getFabricantes(),t.getAñosUso(),t.getPrecio(),t.getModelo(),tipo};
             tb.addRow(row);
         }
-        tb_lista.setModel(tb);
+        return tb;
     }
     
     private void btn_aggCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_aggCMouseClicked
@@ -447,6 +454,7 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Formato no valido");
         }
+        tb_lista.setModel(actualizarTable());
         tf_id.setText("");
         tf_años.setText("");
         tf_fabricante.setText("");
@@ -495,6 +503,7 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Formato incorrecto de ID");
         }
+        tb_lista.setModel(actualizarTable());
         tf_id1.setText("");
         tf_años1.setText("");
         tf_fabricante1.setText("");
