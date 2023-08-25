@@ -9,7 +9,7 @@ public class Consola {
     private String id, fabricantes;
     private int añosUso;
     private double precio;
-    private ArrayList<Juego> juegosDisponibles;
+    private ArrayList<Juego> juegosDisponibles = new ArrayList();
     private String modelo;
 
     public Consola() {
