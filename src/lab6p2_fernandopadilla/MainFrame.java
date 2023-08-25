@@ -5,6 +5,7 @@
 package lab6p2_fernandopadilla;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -60,6 +61,24 @@ public class MainFrame extends javax.swing.JFrame {
         tf_tipoC1 = new javax.swing.JTextField();
         btn_modC = new javax.swing.JButton();
         jd_ListarJuegos = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        tf_nombreJ = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel35 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel36 = new javax.swing.JLabel();
+        tf_precioJuego = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        rb_Nuevo = new javax.swing.JRadioButton();
+        rb_usado = new javax.swing.JRadioButton();
+        jLabel38 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         jd_modificarP = new javax.swing.JDialog();
         panel_aggP1 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
@@ -82,6 +101,8 @@ public class MainFrame extends javax.swing.JFrame {
         rb_Si1 = new javax.swing.JRadioButton();
         rb_No1 = new javax.swing.JRadioButton();
         btn_modP = new javax.swing.JButton();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         panel_aggC = new javax.swing.JPanel();
@@ -276,15 +297,126 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(panel_aggC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+
+        jList1.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(jList1);
+
+        jLabel33.setText("Nombre");
+
+        jLabel34.setText("Descripcion");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jLabel35.setText("Fecha de Lanzamiento");
+
+        jDateChooser1.setDateFormatString("dd/MM/yyyy");
+
+        jLabel36.setText("Precio");
+
+        jLabel37.setText("Estado");
+
+        buttonGroup3.add(rb_Nuevo);
+        rb_Nuevo.setText("Nuevo");
+
+        buttonGroup3.add(rb_usado);
+        rb_usado.setText("Usado");
+
+        jLabel38.setText("Rentable");
+
+        buttonGroup4.add(jRadioButton1);
+        jRadioButton1.setText("Si");
+
+        buttonGroup4.add(jRadioButton2);
+        jRadioButton2.setText("No");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_nombreJ))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(tf_precioJuego)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel34)
+                            .addComponent(jLabel35)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(rb_Nuevo)
+                                .addGap(18, 18, 18)
+                                .addComponent(rb_usado))
+                            .addComponent(jLabel38)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jRadioButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioButton2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel33)
+                            .addComponent(tf_nombreJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel36)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_precioJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rb_Nuevo)
+                            .addComponent(rb_usado))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jRadioButton2))
+                        .addGap(0, 54, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jd_ListarJuegosLayout = new javax.swing.GroupLayout(jd_ListarJuegos.getContentPane());
         jd_ListarJuegos.getContentPane().setLayout(jd_ListarJuegosLayout);
         jd_ListarJuegosLayout.setHorizontalGroup(
             jd_ListarJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_ListarJuegosLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jd_ListarJuegosLayout.setVerticalGroup(
             jd_ListarJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_ListarJuegosLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         panel_aggP1.setBackground(new java.awt.Color(0, 102, 102));
@@ -1039,6 +1171,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btn_modP;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1065,17 +1200,30 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JDialog jd_ListarJuegos;
     private javax.swing.JDialog jd_modificarE;
     private javax.swing.JDialog jd_modificarP;
@@ -1090,6 +1238,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPopupMenu popupM;
     private javax.swing.JRadioButton rb_No;
     private javax.swing.JRadioButton rb_No1;
+    private javax.swing.JRadioButton rb_Nuevo;
     private javax.swing.JRadioButton rb_Si;
     private javax.swing.JRadioButton rb_Si1;
     private javax.swing.JRadioButton rb_grande;
@@ -1098,6 +1247,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_mediana1;
     private javax.swing.JRadioButton rb_small;
     private javax.swing.JRadioButton rb_small1;
+    private javax.swing.JRadioButton rb_usado;
     private javax.swing.JTable tb_lista;
     private javax.swing.JTextField tf_almacenamiento;
     private javax.swing.JTextField tf_almacenamiento1;
@@ -1119,12 +1269,14 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tf_modelo1;
     private javax.swing.JTextField tf_modelo2;
     private javax.swing.JTextField tf_modelo3;
+    private javax.swing.JTextField tf_nombreJ;
     private javax.swing.JTextField tf_numControles;
     private javax.swing.JTextField tf_numControles1;
     private javax.swing.JTextField tf_precio;
     private javax.swing.JTextField tf_precio1;
     private javax.swing.JTextField tf_precio2;
     private javax.swing.JTextField tf_precio3;
+    private javax.swing.JTextField tf_precioJuego;
     private javax.swing.JTextField tf_tipoC;
     private javax.swing.JTextField tf_tipoC1;
     // End of variables declaration//GEN-END:variables
