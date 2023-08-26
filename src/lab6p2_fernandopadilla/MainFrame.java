@@ -5,6 +5,7 @@
 package lab6p2_fernandopadilla;
 
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -68,7 +69,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         tf_nombreJ = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        ta_desc = new javax.swing.JTextArea();
         jLabel35 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel36 = new javax.swing.JLabel();
@@ -77,8 +78,14 @@ public class MainFrame extends javax.swing.JFrame {
         rb_Nuevo = new javax.swing.JRadioButton();
         rb_usado = new javax.swing.JRadioButton();
         jLabel38 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rb_rentableSi = new javax.swing.JRadioButton();
+        rb_rentableNo = new javax.swing.JRadioButton();
+        jLabel39 = new javax.swing.JLabel();
+        rb_aggSi = new javax.swing.JRadioButton();
+        rb_aggNo = new javax.swing.JRadioButton();
+        jLabel40 = new javax.swing.JLabel();
+        tf_cantD = new javax.swing.JTextField();
+        btn_aggJ = new javax.swing.JButton();
         jd_modificarP = new javax.swing.JDialog();
         panel_aggP1 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
@@ -103,6 +110,7 @@ public class MainFrame extends javax.swing.JFrame {
         btn_modP = new javax.swing.JButton();
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         panel_aggC = new javax.swing.JPanel();
@@ -306,9 +314,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel34.setText("Descripcion");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        ta_desc.setColumns(20);
+        ta_desc.setRows(5);
+        jScrollPane3.setViewportView(ta_desc);
 
         jLabel35.setText("Fecha de Lanzamiento");
 
@@ -326,11 +334,28 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel38.setText("Rentable");
 
-        buttonGroup4.add(jRadioButton1);
-        jRadioButton1.setText("Si");
+        buttonGroup4.add(rb_rentableSi);
+        rb_rentableSi.setText("Si");
 
-        buttonGroup4.add(jRadioButton2);
-        jRadioButton2.setText("No");
+        buttonGroup4.add(rb_rentableNo);
+        rb_rentableNo.setText("No");
+
+        jLabel39.setText("Agregado");
+
+        buttonGroup5.add(rb_aggSi);
+        rb_aggSi.setText("Si");
+
+        buttonGroup5.add(rb_aggNo);
+        rb_aggNo.setText("No");
+
+        jLabel40.setText("Cant. Disponible");
+
+        btn_aggJ.setText("Agregar");
+        btn_aggJ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_aggJMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -346,7 +371,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tf_nombreJ))
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3)
                     .addComponent(tf_precioJuego)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,10 +385,20 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(rb_usado))
                             .addComponent(jLabel38)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(rb_rentableSi)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton2)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(rb_rentableNo))
+                            .addComponent(jLabel39)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(rb_aggSi)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rb_aggNo))
+                            .addComponent(jLabel40))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(tf_cantD, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(btn_aggJ, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -397,9 +432,21 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(jLabel38)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2))
-                        .addGap(0, 54, Short.MAX_VALUE))
+                            .addComponent(rb_rentableSi)
+                            .addComponent(rb_rentableNo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rb_aggSi)
+                            .addComponent(rb_aggNo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_cantD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_aggJ, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 1, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -1129,6 +1176,17 @@ public class MainFrame extends javax.swing.JFrame {
         jd_modificarP.dispose();
     }//GEN-LAST:event_btn_modPMouseClicked
 
+    private void btn_aggJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_aggJMouseClicked
+        // TODO add your handling code here:
+        String nombre = tf_nombreJ.getText();
+        String descripcion = ta_desc.getText();
+        Date fechaL = jDateChooser1.getDate();
+        double precio = Double.parseDouble(tf_precioJuego.getText());
+        String estado = "";
+        boolean rentable = false;
+        
+    }//GEN-LAST:event_btn_aggJMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1166,6 +1224,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_aggC;
+    private javax.swing.JButton btn_aggJ;
     private javax.swing.JButton btn_aggP;
     private javax.swing.JButton btn_modC;
     private javax.swing.JButton btn_modP;
@@ -1173,6 +1232,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1206,7 +1266,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1215,15 +1277,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JDialog jd_ListarJuegos;
     private javax.swing.JDialog jd_modificarE;
     private javax.swing.JDialog jd_modificarP;
@@ -1241,13 +1300,18 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_Nuevo;
     private javax.swing.JRadioButton rb_Si;
     private javax.swing.JRadioButton rb_Si1;
+    private javax.swing.JRadioButton rb_aggNo;
+    private javax.swing.JRadioButton rb_aggSi;
     private javax.swing.JRadioButton rb_grande;
     private javax.swing.JRadioButton rb_grande1;
     private javax.swing.JRadioButton rb_mediana;
     private javax.swing.JRadioButton rb_mediana1;
+    private javax.swing.JRadioButton rb_rentableNo;
+    private javax.swing.JRadioButton rb_rentableSi;
     private javax.swing.JRadioButton rb_small;
     private javax.swing.JRadioButton rb_small1;
     private javax.swing.JRadioButton rb_usado;
+    private javax.swing.JTextArea ta_desc;
     private javax.swing.JTable tb_lista;
     private javax.swing.JTextField tf_almacenamiento;
     private javax.swing.JTextField tf_almacenamiento1;
@@ -1255,6 +1319,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tf_años1;
     private javax.swing.JTextField tf_años2;
     private javax.swing.JTextField tf_años3;
+    private javax.swing.JTextField tf_cantD;
     private javax.swing.JTextField tf_duracionB;
     private javax.swing.JTextField tf_duracionB1;
     private javax.swing.JTextField tf_fabricante;

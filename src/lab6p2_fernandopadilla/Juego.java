@@ -92,7 +92,7 @@ public class Juego {
 
     @Override
     public String toString() {
-        return nombre ;
+        return nombre +" Cantidad disponible: "+ cantidadDisponible;
     }
     
     
