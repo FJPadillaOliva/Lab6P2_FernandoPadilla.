@@ -64,7 +64,7 @@ public class MainFrame extends javax.swing.JFrame {
         jd_ListarJuegos = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaJ = new javax.swing.JList<>();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         tf_nombreJ = new javax.swing.JTextField();
@@ -111,6 +111,9 @@ public class MainFrame extends javax.swing.JFrame {
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
         buttonGroup5 = new javax.swing.ButtonGroup();
+        popupM_Juegos = new javax.swing.JPopupMenu();
+        Modificar = new javax.swing.JMenuItem();
+        Eliminar = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         panel_aggC = new javax.swing.JPanel();
@@ -307,8 +310,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
-        jList1.setModel(new DefaultListModel());
-        jScrollPane2.setViewportView(jList1);
+        listaJ.setModel(new DefaultListModel());
+        listaJ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaJMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(listaJ);
 
         jLabel33.setText("Nombre");
 
@@ -611,6 +619,22 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(panel_aggP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        Modificar.setText("Modificar");
+        Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarActionPerformed(evt);
+            }
+        });
+        popupM_Juegos.add(Modificar);
+
+        Eliminar.setText("Eliminar");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
+        popupM_Juegos.add(Eliminar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1083,6 +1107,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void menuListarJuegosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListarJuegosActionPerformed
         // TODO add your handling code here:
+        jd_ListarJuegos.setModal(true);
+        jd_ListarJuegos.pack();
+        jd_ListarJuegos.setLocationRelativeTo(this);
+        jd_ListarJuegos.setVisible(true);
+        listaJ.setModel(actualizarLista());
     }//GEN-LAST:event_menuListarJuegosActionPerformed
 
     private void btn_modCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modCMouseClicked
@@ -1184,9 +1213,83 @@ public class MainFrame extends javax.swing.JFrame {
         double precio = Double.parseDouble(tf_precioJuego.getText());
         String estado = "";
         boolean rentable = false;
-        
+        boolean agregado = false;
+        int cantD = Integer.parseInt(tf_cantD.getText());
+        if (rb_Nuevo.isSelected()) {
+            estado = "Nuevo";
+        }else if(rb_usado.isSelected()){
+            estado = "Usado";
+        }
+        if (rb_rentableSi.isSelected()) {
+            rentable = true;
+        }else if(rb_rentableNo.isSelected()){
+            rentable = false;
+        }
+        if (rb_aggSi.isSelected()) {
+            agregado = true;
+        }else if(rb_aggNo.isSelected()){
+            agregado = false;
+        }
+        consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles().add(new Juego(nombre, descripcion, fechaL, precio, estado, rentable, agregado, cantD));
+        JOptionPane.showMessageDialog(jd_ListarJuegos, "Agregado exitosamente");
+        listaJ.setModel(actualizarLista());
+        tf_nombreJ.setText("");
+        ta_desc.setText("");
+        jDateChooser1.setDate(new Date());
+        tf_precioJuego.setText("");
+        rb_Nuevo.setSelected(false);
+        rb_usado.setSelected(false);
+        rb_rentableSi.setSelected(false);
+        rb_rentableNo.setSelected(false);
+        rb_aggNo.setSelected(false);
+        rb_aggSi.setSelected(false);
     }//GEN-LAST:event_btn_aggJMouseClicked
 
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        // TODO add your handling code here:
+        if (listaJ.getSelectedIndex() >= 0) {
+            if (consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles().get(listaJ.getSelectedIndex()).getCantidadDisponible() > 0) {
+                int cant = consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles().get(listaJ.getSelectedIndex()).getCantidadDisponible();
+                consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles().get(listaJ.getSelectedIndex()).setCantidadDisponible(cant-1);
+            }else{
+                consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles().remove(listaJ.getSelectedIndex());
+            }
+            listaJ.setModel(actualizarLista());
+        }
+    }//GEN-LAST:event_EliminarActionPerformed
+
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        // TODO add your handling code here:
+        String nombre = JOptionPane.showInputDialog("Ingrese nuevo nombre");
+        consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles().get(listaJ.getSelectedIndex()).setNombre(nombre);
+        String descripcion = JOptionPane.showInputDialog("Ingrese nombre: ");
+        consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles().get(listaJ.getSelectedIndex()).setDesc(descripcion);
+        Date fechaL = new Date(JOptionPane.showInputDialog("Ingrese fecha"));
+        consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles().get(listaJ.getSelectedIndex()).setFechaL(fechaL);
+        double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese precio"));
+        consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles().get(listaJ.getSelectedIndex()).setPrecio(precio);
+        int cant = Integer.parseInt(JOptionPane.showInputDialog("Ingrese cantidad disponible:"));
+        consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles().get(listaJ.getSelectedIndex()).setCantidadDisponible(cant);
+        listaJ.setModel(actualizarLista());
+    }//GEN-LAST:event_ModificarActionPerformed
+
+    private void listaJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaJMouseClicked
+        // TODO add your handling code here:
+        if (evt.isMetaDown()) {
+            if (listaJ.getSelectedIndex() >= 0) {
+                popupM_Juegos.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_listaJMouseClicked
+
+    public DefaultListModel actualizarLista(){
+        listaJ.setModel(new DefaultListModel());
+        DefaultListModel lm = (DefaultListModel) listaJ.getModel();
+        for (Juego t : consolas.get(tb_lista.getSelectedRow()).getJuegosDisponibles()) {
+            lm.addElement(t);
+        }
+        return lm;
+    }
     /**
      * @param args the command line arguments
      */
@@ -1223,6 +1326,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Eliminar;
+    private javax.swing.JMenuItem Modificar;
     private javax.swing.JButton btn_aggC;
     private javax.swing.JButton btn_aggJ;
     private javax.swing.JButton btn_aggP;
@@ -1274,7 +1379,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1286,6 +1390,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JDialog jd_ListarJuegos;
     private javax.swing.JDialog jd_modificarE;
     private javax.swing.JDialog jd_modificarP;
+    private javax.swing.JList<String> listaJ;
     private javax.swing.JMenuItem menuEditar;
     private javax.swing.JMenuItem menuEliminar;
     private javax.swing.JMenuItem menuListarJuegos;
@@ -1295,6 +1400,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panel_aggP;
     private javax.swing.JPanel panel_aggP1;
     private javax.swing.JPopupMenu popupM;
+    private javax.swing.JPopupMenu popupM_Juegos;
     private javax.swing.JRadioButton rb_No;
     private javax.swing.JRadioButton rb_No1;
     private javax.swing.JRadioButton rb_Nuevo;
